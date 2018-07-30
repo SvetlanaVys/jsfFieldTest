@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <meta name ="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <title>Create Profile</title>
+    <style type="text/css">
+        .form {
+            width: 30%;
+            margin: auto;
+            padding: 3rem;
+            border: 1px solid  #2e91e9;
+            border-radius: 5px;
+            -webkit-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            -moz-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+        }
+        .form .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .form .form-group label {
+            margin-right: 10px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form id="createProfileForm" class="form">
+        <h2 style="text-align: center; margin-top: 0;">Create Profile</h2>
+        <p:messages autoUpdate="true" />
+        <div class="form-group">
+            <p:outputLabel for="email" value="Email:"/>
+            <p:inputText id="email" value="#{profileBean.profile.email}" required="true"
+                         requiredMessage="Please enter your email address."
+                         validatorMessage="Invalid email format">
+                <f:validateRegex
+                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                <f:validateRequired />
+            </p:inputText>
+        </div>
+        <p:messages for="pwd1" id="messages" showDetail="true" autoUpdate="true" />
+
+        <div class="form-group">
+            <p:outputLabel for="pwd1" value="Password:" />
+            <p:password id="pwd1" value="#{profileBean.profile.password}" match="pwd2" label="Password" required="true"
+                        requiredMessage="Please enter your password."
+                        validatorMessage="Password should match with Confirm Password." />
+        </div>
+        <div class="form-group">
+            <p:outputLabel for="pwd2" value="Confirm Password:" />
+            <p:password id="pwd2" value="#{profileBean.profile.password}" label="Confirm Password" required="true"
+                        requiredMessage="Please enter confirm password."/>
+        </div>
+
+
+        <div class="form-group">
+            <p:outputLabel for="firstName" value="First Name:"/>
+            <p:inputText id="firstName" value="#{profileBean.profile.firstName}">
+                <f:validateRequired/>
+            </p:inputText>
+        </div>
+        <div class="form-group">
+            <p:outputLabel for="lastName" value="Last Name:" />
+            <p:inputText id="lastName" value="#{profileBean.profile.lastName}">
+                <f:validateRequired/>
+            </p:inputText>
+        </div>
+        <div class="form-group">
+            <p:outputLabel for="phone" value="Phone:"/>
+            <p:inputText id="phone" value="#{profileBean.profile.phone}">
+                <f:validateRequired/>
+            </p:inputText>
+        </div>
+        <p:commandButton value="Save" action="#{profileBean.saveProfileDetails(profileBean.profile)}" style="width: 100%; ; margin-bottom: 10px"/>
+        <p:link outcome="login" value="lOG IN"/>
+    </h:form>
+</h:body>
+</html>

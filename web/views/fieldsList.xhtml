@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+<f:view>
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <title>MyApp</title>
+        <style type="text/css">
+            .menu {
+                margin-bottom: 15px;
+            }
+            .menu ul {
+                display: flex;
+                justify-content: space-around;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar class="menu">
+                <p:menuitem><span style="text-align: left; color: #1484e6; line-height: 30px">LOGO<span style="color: #e69700">TYPE</span></span></p:menuitem>
+                <p:menuitem value="Fields" url="/views/fieldsList.xhtml?faces-redirect=true" />
+                <p:menuitem value="Responses" url="/views/responsesList.xhtml?faces-redirect=true" />
+                <p:submenu label="#{loginUser.firstName} #{loginUser.lastName}">
+                    <p:menuitem value="Edit Profile" action="#{profileBean.editProfileRecord(loginUser.id)}" update="messages"/>
+                    <p:menuitem value="Change Password" action="/views/editPassword.xhtml?faces-redirect=true"  update="messages" ajax="false"/>
+                    <p:menuitem value="Log Out" action="#{loginBean.logout}" update="messages" ajax="false"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <h:form id="fieldForm">
+            <p:panel header="Field Records">
+                <p:commandButton action="createField" value="Create New Field"/>
+                <p:dataTable id="fieldTable" binding="#{table}" value="#{fieldBean.fieldsList()}" var="field">
+                    <p:column>
+                        <f:facet name="header">Label</f:facet>
+                        <h:outputText value="#{field.label}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Type</f:facet>
+                        <h:outputText value="#{field.type}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Active</f:facet>
+                        <h:outputText value="#{field.isActive}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Required</f:facet>
+                        <h:outputText value="#{field.required}" />
+                    </p:column>
+                    <p:column style="display: none">
+                        <f:facet name="header">rowNumber</f:facet>
+                        <h:outputText value="#{field.rowNumber}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Update</f:facet>
+                        <p:commandButton action="#{fieldBean.editFieldRecord(field.id)}" value="Update"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Delete</f:facet>
+                        <p:commandButton action="#{fieldBean.deleteFieldRecord(field)}" value="Delete"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</f:view>
+</html>

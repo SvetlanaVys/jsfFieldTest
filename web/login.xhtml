@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" >
+<h:head>
+    <title>Login</title>
+    <style type="text/css">
+        .formLogin {
+            width: 30%;
+            margin: auto;
+            margin-top: calc(100vh - 500px);
+            padding: 3rem;
+            border: 1px solid  #2e91e9;
+            border-radius: 5px;
+            -webkit-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            -moz-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            color: #1484e6;
+            line-height: 30px;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .logo > span {
+            color: #e69700;
+        }
+
+    </style>
+</h:head>
+<h:body >
+    <h:form class="formLogin">
+        <p class="logo">LOGO<span>TYPE</span></p>
+        <div style="text-align: center">
+            <p:outputLabel for="username" value="Username" style="margin-right: 10px"/>
+            <p:inputText id="username" value="#{loginBean.user}" required="true" requiredMessage="Please enter your email"></p:inputText>
+            <p:message for="username" autoUpdate="true"></p:message>
+            <br></br><br></br>
+        </div>
+        <div style="text-align: center">
+            <p:outputLabel for="password" value="Password" style="margin-right: 10px"/>
+            <p:password id="password" value="#{loginBean.pwd}" required="true" requiredMessage="Please enter your password"></p:password>
+            <p:message for="password" autoUpdate="true"></p:message>
+            <br></br><br></br>
+        </div>
+        <p:messages autoUpdate="true" />
+        <p:commandButton id="loginBtn" action="#{loginBean.validateUsernamePassword}"
+                         value="Login" style="width: 100%;"></p:commandButton>
+        <p:link outcome="createProfile.xhtml?faces-redirect=true" value="Create account"></p:link>
+    </h:form>
+</h:body>
+</html>

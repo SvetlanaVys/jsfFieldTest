@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view>
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+        <title>MyApp</title>
+        <style type="text/css">
+            .menu {
+                margin-bottom: 15px;
+            }
+            .menu ul {
+                display: flex;
+                justify-content: space-around;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar class="menu">
+                <p:menuitem><span style="text-align: left; color: #1484e6; line-height: 30px">LOGO<span style="color: #e69700">TYPE</span></span></p:menuitem>
+                <p:menuitem value="Fields" url="/views/fieldsList.xhtml?faces-redirect=true" />
+                <p:menuitem value="Responses" url="/views/responsesList.xhtml?faces-redirect=true" />
+                <p:submenu label="#{loginUser.firstName} #{loginUser.lastName}">
+                    <p:menuitem value="Edit Profile" action="#{profileBean.editProfileRecord(loginUser.id)}" update="messages"/>
+                    <p:menuitem value="Change Password" action="/views/editPassword.xhtml?faces-redirect=true"  update="messages" ajax="false"/>
+                    <p:menuitem value="Log Out" action="#{loginBean.logout}" update="messages" ajax="false"/>
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <h:form id="responseForm">
+            <p:panel header="Response Records">
+                <div id="fieldForm:fieldTable" class="ui-datatable ui-widget">
+                    <div class="ui-datatable-tablewrapper">
+                        <table role="grid">
+                            <thead id="fieldForm:fieldTable_head">
+                            <tr role="row">
+                                <c:forEach var="field" items="#{responseBean.allFieldList()}">
+                                    <th id="fieldForm:fieldTable:j_idt17" class="ui-state-default" role="columnheader">
+                                        <span class="ui-column-title">#{field.label}</span>
+                                    </th>
+                                </c:forEach>
+                            </tr>
+                            </thead>
+                            <tbody id="fieldForm:fieldTable_data" class="ui-datatable-data ui-widget-content">
+                            <c:forEach var="entry" items="#{responseBean.responsesMap().entrySet().toArray()}">
+                                <tr class="ui-widget-content ui-datatable-even" role="row">
+                                    <c:forEach var="field" items="#{responseBean.allFieldList()}">
+                                        <td role="gridcell" style="padding: 10px 15px">
+                                            <c:if test="${empty entry.value.get(field.id)}">
+                                                N/A
+                                            </c:if>
+                                            ${entry.value.get(field.id)}
+                                        </td>
+                                    </c:forEach>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </p:panel>
+        </h:form>
+    </h:body>
+</f:view>
+</html>

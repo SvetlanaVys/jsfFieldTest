@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <meta  name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <title>MyApp</title>
+    <style type="text/css">
+        .form {
+            width: 30%;
+            margin: auto;
+            padding: 3rem;
+            border: 1px solid  #2e91e9;
+            border-radius: 5px;
+            -webkit-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            -moz-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+        }
+        .menu {
+            margin-bottom: 15px;
+        }
+        .menu ul {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="messages"/>
+        <p:menubar class="menu">
+            <p:menuitem><span style="text-align: left; color: #1484e6; line-height: 30px">LOGO<span style="color: #e69700">TYPE</span></span></p:menuitem>
+            <p:menuitem value="Fields" url="/views/fieldsList.xhtml?faces-redirect=true" />
+            <p:menuitem value="Responses" url="/views/responsesList.xhtml?faces-redirect=true" />
+            <p:submenu label="#{loginUser.firstName} #{loginUser.lastName}">
+                <p:menuitem value="Edit Profile" action="#{profileBean.editProfileRecord(loginUser.id)}" update="messages"/>
+                <p:menuitem value="Change Password" action="/views/editPassword.xhtml?faces-redirect=true"  update="messages" ajax="false"/>
+                <p:menuitem value="Log Out" action="#{loginBean.logout}" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+    <h:form id="form" class="form">
+        <p:messages autoUpdate="true" />
+        <div style="text-align: center; margin-bottom: 15px">
+            <p:outputLabel for="email" value="Email:" style="margin-right: 10px; margin-bottom: 15px;" />
+            <p:inputText id="email" value="#{editRecordObj.email}" required="true" />
+        </div>
+        <div style="text-align: center; margin-bottom: 15px">
+            <p:outputLabel for="firstName" value="First Name:" style="margin-right: 10px;margin-bottom: 15px;" />
+            <p:inputText id="firstName" value="#{editRecordObj.firstName}"/>
+        </div>
+        <div style="text-align: center; margin-bottom: 15px">
+            <p:outputLabel for="lastName" value="Last Name:" style="margin-right: 10px;margin-bottom: 15px;" />
+            <p:inputText id="lastName" value="#{editRecordObj.lastName}" class="form-control"/>
+        </div>
+        <div style="text-align: center; margin-bottom: 15px">
+            <p:outputLabel for="phone" value="Phone:" style="margin-right: 10px;margin-bottom: 15px;" />
+            <p:inputText id="phone" value="#{editRecordObj.phone}" class="form-control"/>
+        </div>
+        <p:commandButton value="Update" action="#{profileBean.updateProfileDetails(editRecordObj)}" style="width: 100%;" />
+    </h:form>
+</h:body>
+</html>

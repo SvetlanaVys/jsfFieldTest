@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <meta name ="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <title>MyApp</title>
+    <style type="text/css">
+        .form {
+            width: 30%;
+            margin: auto;
+            padding: 3rem;
+            border: 1px solid  #2e91e9;
+            border-radius: 5px;
+            -webkit-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            -moz-box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+            box-shadow: 3px 3px 18px -1px rgba(27,83,133,1);
+        }
+        .form > * {
+            margin: auto;
+        }
+        .menu {
+            margin-bottom: 15px;
+        }
+        .menu ul {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form>
+        <p:growl id="messages"/>
+        <p:menubar class="menu">
+            <p:menuitem><span style="text-align: left; color: #1484e6; line-height: 30px">LOGO<span style="color: #e69700">TYPE</span></span></p:menuitem>
+            <p:menuitem value="Fields" url="/views/fieldsList.xhtml?faces-redirect=true" />
+            <p:menuitem value="Responses" url="/views/responsesList.xhtml?faces-redirect=true" />
+            <p:submenu label="#{loginUser.firstName} #{loginUser.lastName}">
+                <p:menuitem value="Edit Profile" action="#{profileBean.editProfileRecord(loginUser.id)}" update="messages"/>
+                <p:menuitem value="Change Password" action="/views/editPassword.xhtml?faces-redirect=true"  update="messages" ajax="false"/>
+                <p:menuitem value="Log Out" action="#{loginBean.logout}" update="messages" ajax="false"/>
+            </p:submenu>
+        </p:menubar>
+    </h:form>
+    <h:form id="createStudentForm" class="form">
+        <p:messages autoUpdate="true" />
+        <div style="text-align: center">
+            <p:outputLabel for="label" value="Label:" style="margin-right: 10px" />
+            <p:inputText id="label" value="#{fieldBean.field.label}" class="form-control"
+                         style="margin-bottom: 15px" required="true" requiredMessage="Please enter label">
+                    <f:validateRequired />
+            </p:inputText>
+        </div>
+        <div style="text-align: center">
+            <p:outputLabel for="type" value="Type:" style="margin-right: 10px" />
+            <p:selectOneMenu id="type" value="#{fieldBean.field.type}" style="width: 200px;"
+                             required="true" requiredMessage="Select the type">
+                <f:selectItem itemLabel="Single line text" itemValue="Single line text" />
+                <f:selectItem itemLabel="Multiline text" itemValue="Multiline text" />
+                <f:selectItem itemLabel="Radio button" itemValue="Radio button" />
+                <f:selectItem itemLabel="Checkbox" itemValue="Checkbox" />
+                <f:selectItem itemLabel="Combobox" itemValue="Combobox" />
+                <f:selectItem itemLabel="Date" itemValue="Date" />
+            </p:selectOneMenu>
+            <div class="form-group">
+                <p:outputLabel for="option" value="Options:" />
+                <p:inputTextarea rows="6" cols="24" id="option"
+                                 value = "#{fieldBean.optString}"
+                                 required="true" requiredMessage="Please enter options"/>
+
+            </div>
+        </div>
+        <div style="text-align: center">
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="@next" value="Active: " />
+                <p:selectBooleanCheckbox value="#{fieldBean.field.isActive}" style="float: left"/>
+
+                <p:outputLabel for="@next" value="Required: " />
+                <p:selectBooleanCheckbox value="#{fieldBean.field.required}"/>
+            </h:panelGrid>
+        </div>
+        <p:commandButton value="Save" action="#{fieldBean.saveFieldDetails(fieldBean.field)}" style="width: 100%;" />
+    </h:form>
+</h:body>
+</html>
