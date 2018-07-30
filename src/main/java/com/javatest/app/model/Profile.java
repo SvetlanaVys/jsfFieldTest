@@ -10,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  * @version 1.0
  */
 @Entity
-@Table(name = "public.user")
+@Table(name = "profile")
 public class Profile {
 
     /** The id is a unique object identifier */
@@ -28,11 +28,11 @@ public class Profile {
     private String password;
 
     /** This is the user`s First Name */
-    @Column(name = "firstname")
+    @Column(name = "first_name")
     private String firstName;
 
     /** This is the user`s Last Name */
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastName;
 
     /** This is the user`s Phone number */

@@ -69,7 +69,11 @@ public class FieldBean {
      */
     public String saveFieldDetails(Field newField) {
         newField.setOptions(new ArrayList<Option>());
-        newField.setRowNumber(this.fieldsList.get(0).getRowNumber());
+        if (this.fieldsList.size() != 0) {
+            newField.setRowNumber(this.fieldsList.get(0).getRowNumber());
+        } else {
+            newField.setRowNumber(0);
+        }
         return FieldDAO.saveFieldDetails(saveOptions(newField, optString));
     }
     public String editFieldRecord(Long fieldId) {
