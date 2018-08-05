@@ -54,7 +54,7 @@
         <p:messages autoUpdate="true" />
         <div class="form-group">
             <p:outputLabel for="label" value="Label:"/>
-            <p:inputText id="label" value="#{editRecordObj.label}" class="form-control" required="true" />
+            <p:inputText id="label" value="#{editRecordObj.label}" maxlength="50" required="true" requiredMessage="Please enter label"/>
         </div>
         <div class="form-group">
             <p:outputLabel for="type" value="Type:" style="margin-right: 10px" />

@@ -1,5 +1,6 @@
 package com.javatest.app.dao;
 
+import com.javatest.app.model.Field;
 import com.javatest.app.model.QResponse;
 import com.javatest.app.model.Response;
 import com.javatest.app.util.HibernateUtil;
@@ -56,12 +57,12 @@ public class ResponseDAO {
             for(Response response: newResponses) {
                 session.persist(response);
                 session.flush();
-                String hql = "UPDATE Field SET rowNumber = :rowNumber WHERE id = :id";
-                Query query = session.createQuery(hql);
-                query.setParameter("rowNumber", (response.getField().getRowNumber() + 1));
-                query.setParameter("id", response.getField().getId());
-                int result = query.executeUpdate();
             }
+                String hql = "UPDATE Field SET rowNumber = :rowNumber";
+                Query query = session.createQuery(hql);
+                query.setParameter("rowNumber", (newResponses.get(0).getField().getRowNumber() + 1));
+                int result = query.executeUpdate();
+
         } catch(Exception sqlException){
             session.getTransaction().rollback();
             sqlException.printStackTrace();
@@ -72,5 +73,27 @@ public class ResponseDAO {
         }
 
         return "/successResponse.xhtml?faces-redirect=true";
+    }
+
+    /**
+     *
+     * @param responseList are responses to remove
+     */
+    public static void deleteResponseRecord(List<Response> responseList){
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            for(Response response: responseList) {
+                session.delete(response);
+            }
+            session.getTransaction().commit();
+        } catch(Exception sqlException){
+            session.getTransaction().rollback();
+            sqlException.printStackTrace();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
     }
 }

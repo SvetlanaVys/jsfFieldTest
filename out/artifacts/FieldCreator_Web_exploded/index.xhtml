@@ -52,24 +52,24 @@
                 <c:if test="#{field.type eq 'Single line text'}">
                     <c:if test="#{field.required}">
                         <p:outputLabel for="str" value="#{field.label}"/>
-                        <p:inputText id="str" value="#{field.responseBuf}" class="form-control"
+                        <p:inputText id="str" value="#{field.responseBuf}" maxlength="50"
                                      requiredMessage="Please enter value #{field.label}" required="true" />
                     </c:if>
                     <c:if test="#{!field.required}">
                         <p:outputLabel for="st" value="#{field.label}"/>
-                        <p:inputText id="st" value="#{field.responseBuf}" class="form-control"/>
+                        <p:inputText id="st" value="#{field.responseBuf}" maxlength="50"/>
                     </c:if>
                 </c:if>
                 <c:if test="#{field.type eq 'Multiline text'}">
                     <c:if test="#{field.required}">
                         <p:outputLabel for="mtr" value="#{field.label}"/>
                         <p:inputTextarea rows="6" cols="24" id="mtr"
-                                         value = "#{field.responseBuf}"
+                                         value = "#{field.responseBuf}" maxlength="150"
                                          requiredMessage="Please enter value #{field.label}" required="true" />
                     </c:if>
                     <c:if test="#{!field.required}">
                         <p:outputLabel for="mt" value="#{field.label}"/>
-                        <p:inputTextarea rows="6" cols="24" id="mt"  value = "#{field.responseBuf}"/>
+                        <p:inputTextarea rows="6" cols="24" id="mt"  maxlength="150" value = "#{field.responseBuf}"/>
                     </c:if>
                 </c:if>
                 <c:if test="#{field.type eq 'Radio button'}">

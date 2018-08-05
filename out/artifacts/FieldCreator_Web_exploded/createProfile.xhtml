@@ -36,7 +36,7 @@
         <p:messages autoUpdate="true" />
         <div class="form-group">
             <p:outputLabel for="email" value="Email:"/>
-            <p:inputText id="email" value="#{profileBean.profile.email}" required="true"
+            <p:inputText id="email" value="#{profileBean.profile.email}" maxlength="50" required="true"
                          requiredMessage="Please enter your email address."
                          validatorMessage="Invalid email format">
                 <f:validateRegex
@@ -48,32 +48,36 @@
 
         <div class="form-group">
             <p:outputLabel for="pwd1" value="Password:" />
-            <p:password id="pwd1" value="#{profileBean.profile.password}" match="pwd2" label="Password" required="true"
+            <p:password id="pwd1" value="#{profileBean.profile.password}" match="pwd2" label="Password" maxlength="30" required="true"
                         requiredMessage="Please enter your password."
                         validatorMessage="Password should match with Confirm Password." />
         </div>
         <div class="form-group">
             <p:outputLabel for="pwd2" value="Confirm Password:" />
-            <p:password id="pwd2" value="#{profileBean.profile.password}" label="Confirm Password" required="true"
+            <p:password id="pwd2" value="#{profileBean.profile.password}" label="Confirm Password" maxlength="30" required="true"
                         requiredMessage="Please enter confirm password."/>
         </div>
 
 
         <div class="form-group">
             <p:outputLabel for="firstName" value="First Name:"/>
-            <p:inputText id="firstName" value="#{profileBean.profile.firstName}">
+            <p:inputText id="firstName" value="#{profileBean.profile.firstName}" maxlength="50"
+                        validatorMessage="First Name: Enter only letters">
                 <f:validateRequired/>
+                <f:validateRegex pattern="^[а-яА-ЯёЁa-zA-Z]+$"></f:validateRegex>
             </p:inputText>
         </div>
         <div class="form-group">
             <p:outputLabel for="lastName" value="Last Name:" />
-            <p:inputText id="lastName" value="#{profileBean.profile.lastName}">
+            <p:inputText id="lastName" value="#{profileBean.profile.lastName}" maxlength="50"
+                         validatorMessage="Last Name: Enter only letters">
                 <f:validateRequired/>
+                <f:validateRegex pattern="^[а-яА-ЯёЁa-zA-Z]+$"></f:validateRegex>
             </p:inputText>
         </div>
         <div class="form-group">
             <p:outputLabel for="phone" value="Phone:"/>
-            <p:inputText id="phone" value="#{profileBean.profile.phone}">
+            <p:inputText id="phone" value="#{profileBean.profile.phone}" maxlength="15">
                 <f:validateRequired/>
             </p:inputText>
         </div>

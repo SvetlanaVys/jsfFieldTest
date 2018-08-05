@@ -28,11 +28,8 @@ public class LoginDAO {
      * @return is this user exist in system
      */
     public static boolean validate(String email, String password) {
-        Connection con = null;
-        PreparedStatement ps = null;
-
         /** Setting The Particular Field Details In Session */
-        Map<String,Object> sessionMapObj = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        Map<String, Object> sessionMapObj = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 
         try {
             session = sessionFactory.openSession();

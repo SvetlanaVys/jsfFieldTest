@@ -93,8 +93,8 @@ public class ProfileBean {
         }
     }
 
-    public String updateProfilePassword(Long id) {
-        String result = ProfileDAO.updateProfilePassword(id, oldPassword, newPassword);
+    public String updateProfilePassword(Profile profile) {
+        String result = ProfileDAO.updateProfilePassword(profile, oldPassword, newPassword);
         if(result != null) {
             return result;
         } else {

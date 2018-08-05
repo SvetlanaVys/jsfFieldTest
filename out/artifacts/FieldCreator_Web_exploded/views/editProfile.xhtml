@@ -47,19 +47,31 @@
         <p:messages autoUpdate="true" />
         <div style="text-align: center; margin-bottom: 15px">
             <p:outputLabel for="email" value="Email:" style="margin-right: 10px; margin-bottom: 15px;" />
-            <p:inputText id="email" value="#{editRecordObj.email}" required="true" />
+            <p:inputText id="email" value="#{editRecordObj.email}" maxlength="50" required="true"
+                         requiredMessage="Please enter your email."
+                         validatorMessage="Invalid email format">
+                <f:validateRegex
+                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                <f:validateRequired />
+            </p:inputText>
         </div>
         <div style="text-align: center; margin-bottom: 15px">
-            <p:outputLabel for="firstName" value="First Name:" style="margin-right: 10px;margin-bottom: 15px;" />
-            <p:inputText id="firstName" value="#{editRecordObj.firstName}"/>
+            <p:outputLabel for="firstName" value="First Name:" style="margin-right: 10px; margin-bottom: 15px;" />
+            <p:inputText id="firstName" value="#{editRecordObj.firstName}" maxlength="50"
+                         validatorMessage="First Name: Enter only letters">
+                <f:validateRegex pattern="^[а-яА-ЯёЁa-zA-Z]+$"></f:validateRegex>
+            </p:inputText>
         </div>
         <div style="text-align: center; margin-bottom: 15px">
             <p:outputLabel for="lastName" value="Last Name:" style="margin-right: 10px;margin-bottom: 15px;" />
-            <p:inputText id="lastName" value="#{editRecordObj.lastName}" class="form-control"/>
+            <p:inputText id="lastName" value="#{editRecordObj.lastName}" class="form-control" maxlength="50"
+                         validatorMessage="Last Name: Enter only letters">
+                <f:validateRegex pattern="^[а-яА-ЯёЁa-zA-Z]+$"></f:validateRegex>
+            </p:inputText>
         </div>
         <div style="text-align: center; margin-bottom: 15px">
             <p:outputLabel for="phone" value="Phone:" style="margin-right: 10px;margin-bottom: 15px;" />
-            <p:inputText id="phone" value="#{editRecordObj.phone}" class="form-control"/>
+            <p:inputText id="phone" value="#{editRecordObj.phone}" class="form-control" maxlength="15"/>
         </div>
         <p:commandButton value="Update" action="#{profileBean.updateProfileDetails(editRecordObj)}" style="width: 100%;" />
     </h:form>

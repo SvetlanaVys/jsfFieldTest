@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import java.util.List;
 
+import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
@@ -48,6 +49,7 @@ public class Field {
 
     @Transient
     private String[] responseBufArr;
+
 
     /**
      * Gets the value of the id property, which can be specified using the method {@link #setId(Long)}

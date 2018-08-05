@@ -50,7 +50,7 @@
         <p:messages autoUpdate="true" />
         <div style="text-align: center">
             <p:outputLabel for="label" value="Label:" style="margin-right: 10px" />
-            <p:inputText id="label" value="#{fieldBean.field.label}" class="form-control"
+            <p:inputText id="label" value="#{fieldBean.field.label}" maxlength="50"
                          style="margin-bottom: 15px" required="true" requiredMessage="Please enter label">
                     <f:validateRequired />
             </p:inputText>

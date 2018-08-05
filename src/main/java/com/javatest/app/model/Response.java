@@ -25,7 +25,7 @@ public class Response {
     private Integer row;
 
     /** The field for which was answered*/
-    @ManyToOne(cascade=CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "field")
     private Field field;
 

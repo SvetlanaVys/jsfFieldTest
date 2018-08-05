@@ -63,6 +63,7 @@ public class FieldDAO {
         }
         return fieldsList;
     }
+
     /**
      *
      * @param newField is a created field
@@ -128,7 +129,6 @@ public class FieldDAO {
      */
     public static String updateFieldDetails(Field updateField) {
         try {
-            System.out.println("ST"+updateField.getOptions().get(0).getName()+"EN");
             session = sessionFactory.openSession();
             session.beginTransaction();
             session.update(updateField);
@@ -157,7 +157,7 @@ public class FieldDAO {
 
     /**
      *
-     * @param field is a field ID to remove
+     * @param field is a field to remove
      * @return page with List of fields obtained using the method {@link #getFieldsList()}
      */
     public static String deleteFieldRecord(Field field){

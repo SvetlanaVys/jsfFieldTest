@@ -1,5 +1,6 @@
 package com.javatest.app.dao;
 
+import com.javatest.app.model.Field;
 import com.javatest.app.model.Profile;
 import com.javatest.app.model.QProfile;
 import com.javatest.app.util.HibernateUtil;
@@ -61,7 +62,7 @@ public class ProfileDAO {
 
         } catch(Exception sqlException){
             sqlException.printStackTrace();
-        }finally {
+        } finally {
             if(session != null) {
                 session.close();
             }
@@ -127,25 +128,28 @@ public class ProfileDAO {
 
     /**
      *
-     * @param id registered user id
+     * @param currentProfile registered user
      * @param oldPassword entered current user password
      * @param newPassword password to update
      * @return Login page or null if the current password does not match with @param oldPassword
      */
-    public static String updateProfilePassword(Long id, String oldPassword, String newPassword) {
+    public static String updateProfilePassword(Profile currentProfile, String oldPassword, String newPassword) {
         try {
 
             session = sessionFactory.openSession();
             session.beginTransaction();
             String selectHql = "SELECT p FROM Profile p WHERE id = :id";
             Query selectQuery = session.createQuery(selectHql);
-            Profile profile = (Profile)selectQuery.setParameter("id", id).getSingleResult();
+            Profile profile = (Profile)selectQuery.setParameter("id", currentProfile.getId()).getSingleResult();
             if(BCrypt.checkpw(oldPassword, profile.getPassword())) {
-                String hql = "UPDATE Profile SET password = :password WHERE id = :id";
-                Query query = session.createQuery(hql);
-                query.setParameter("id", id);
-                query.setParameter("password", BCrypt.hashpw(newPassword, BCrypt.gensalt()));
-                int result = query.executeUpdate();
+                profile.setPassword(BCrypt.hashpw(newPassword, BCrypt.gensalt()));
+                session.update(profile);
+                session.getTransaction().commit();
+//                String hql = "UPDATE Profile SET password = :password WHERE id = :id";
+//                Query query = session.createQuery(hql);
+//                query.setParameter("id", id);
+//                query.setParameter("password", BCrypt.hashpw(newPassword, BCrypt.gensalt()));
+//                int result = query.executeUpdate();
                 return "/login.xhtml?faces-redirect=true";
             }
 
@@ -158,5 +162,25 @@ public class ProfileDAO {
             }
         }
         return null;
+    }
+
+    /**
+     *
+     * @param profile is a profile to remove
+     */
+    public static void deleteFieldRecord(Profile profile){
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(profile);
+            session.getTransaction().commit();
+        } catch(Exception sqlException){
+            session.getTransaction().rollback();
+            sqlException.printStackTrace();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
     }
 }
