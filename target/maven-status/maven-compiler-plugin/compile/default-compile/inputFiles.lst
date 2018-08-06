@@ -4,17 +4,13 @@ D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\model\Option.
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\bean\LoginBean.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\dao\ResponseDAO.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\model\Profile.java
-D:\MyFE_all\InfoStroy3\FieldCreator\target\generated-sources\java\com\javatest\app\model\QProfile.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\dao\ProfileDAO.java
-D:\MyFE_all\InfoStroy3\FieldCreator\target\generated-sources\java\com\javatest\app\model\QResponse.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\bean\ProfileBean.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\dao\FieldDAO.java
-D:\MyFE_all\InfoStroy3\FieldCreator\target\generated-sources\java\com\javatest\app\model\QField.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\model\Response.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\filter\AuthorizationFilter.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\bean\ResponseBean.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\MainBean.java
-D:\MyFE_all\InfoStroy3\FieldCreator\target\generated-sources\java\com\javatest\app\model\QOption.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\bean\FieldBean.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\dao\LoginDAO.java
 D:\MyFE_all\InfoStroy3\FieldCreator\src\main\java\com\javatest\app\model\Field.java

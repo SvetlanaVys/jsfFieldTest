@@ -1,1 +1,4 @@
-com\javatest\app\AppTest.class
+com\javatest\app\Field.class
+com\javatest\app\FieldDAOTest.class
+com\javatest\app\ResponseDAOTest.class
+com\javatest\app\ProfileDAOTest.class

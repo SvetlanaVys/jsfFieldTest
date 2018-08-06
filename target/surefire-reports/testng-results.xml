@@ -1,11 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="14" passed="14">
   <reporter-output>
   </reporter-output>
-  <suite name="com.javatest.app.AppTest" duration-ms="8" started-at="2018-08-02T13:02:40Z" finished-at="2018-08-02T13:02:40Z">
+  <suite name="Command line suite" duration-ms="4465" started-at="2018-08-06T11:14:16Z" finished-at="2018-08-06T11:14:20Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="8" started-at="2018-08-02T13:02:40Z" finished-at="2018-08-02T13:02:40Z">
+    <test name="Command line test" duration-ms="4465" started-at="2018-08-06T11:14:16Z" finished-at="2018-08-06T11:14:20Z">
+      <class name="com.javatest.app.FieldDAOTest">
+        <test-method status="PASS" signature="testSaveField()[pri:0, instance:com.javatest.app.FieldDAOTest@642505c7]" name="testSaveField" duration-ms="334" started-at="2018-08-06T11:14:16Z" finished-at="2018-08-06T11:14:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveField -->
+        <test-method status="PASS" signature="testSaveOption()[pri:0, instance:com.javatest.app.FieldDAOTest@642505c7]" name="testSaveOption" duration-ms="517" started-at="2018-08-06T11:14:16Z" depends-on-methods="com.javatest.app.FieldDAOTest.testSaveField" finished-at="2018-08-06T11:14:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveOption -->
+        <test-method status="PASS" signature="testUpdateField()[pri:0, instance:com.javatest.app.FieldDAOTest@642505c7]" name="testUpdateField" duration-ms="330" started-at="2018-08-06T11:14:17Z" depends-on-methods="com.javatest.app.FieldDAOTest.testSaveField" finished-at="2018-08-06T11:14:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateField -->
+        <test-method status="PASS" signature="testUpdateOption()[pri:0, instance:com.javatest.app.FieldDAOTest@642505c7]" name="testUpdateOption" duration-ms="330" started-at="2018-08-06T11:14:17Z" depends-on-methods="com.javatest.app.FieldDAOTest.testSaveOption" finished-at="2018-08-06T11:14:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateOption -->
+        <test-method status="PASS" signature="testDeleteField()[pri:0, instance:com.javatest.app.FieldDAOTest@642505c7]" name="testDeleteField" duration-ms="350" started-at="2018-08-06T11:14:17Z" depends-on-methods="com.javatest.app.FieldDAOTest.testUpdateOption" finished-at="2018-08-06T11:14:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteField -->
+      </class> <!-- com.javatest.app.FieldDAOTest -->
+      <class name="com.javatest.app.ResponseDAOTest">
+        <test-method status="PASS" signature="testSaveField()[pri:0, instance:com.javatest.app.ResponseDAOTest@153cd6bb]" name="testSaveField" duration-ms="167" started-at="2018-08-06T11:14:19Z" finished-at="2018-08-06T11:14:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveField -->
+        <test-method status="PASS" signature="testSaveResponse()[pri:0, instance:com.javatest.app.ResponseDAOTest@153cd6bb]" name="testSaveResponse" duration-ms="514" started-at="2018-08-06T11:14:19Z" depends-on-methods="com.javatest.app.ResponseDAOTest.testSaveField" finished-at="2018-08-06T11:14:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveResponse -->
+        <test-method status="PASS" signature="testDeleteResponse()[pri:0, instance:com.javatest.app.ResponseDAOTest@153cd6bb]" name="testDeleteResponse" duration-ms="246" started-at="2018-08-06T11:14:20Z" depends-on-methods="com.javatest.app.ResponseDAOTest.testSaveResponse" finished-at="2018-08-06T11:14:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteResponse -->
+        <test-method status="PASS" signature="testDeleteField()[pri:0, instance:com.javatest.app.ResponseDAOTest@153cd6bb]" name="testDeleteField" duration-ms="167" started-at="2018-08-06T11:14:20Z" depends-on-methods="com.javatest.app.ResponseDAOTest.testDeleteResponse" finished-at="2018-08-06T11:14:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteField -->
+      </class> <!-- com.javatest.app.ResponseDAOTest -->
+      <class name="com.javatest.app.ProfileDAOTest">
+        <test-method status="PASS" signature="testSaveProfile()[pri:0, instance:com.javatest.app.ProfileDAOTest@4339e0de]" name="testSaveProfile" duration-ms="356" started-at="2018-08-06T11:14:18Z" finished-at="2018-08-06T11:14:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSaveProfile -->
+        <test-method status="PASS" signature="testNoUpdatePrassword()[pri:0, instance:com.javatest.app.ProfileDAOTest@4339e0de]" name="testNoUpdatePrassword" duration-ms="478" started-at="2018-08-06T11:14:18Z" depends-on-methods="com.javatest.app.ProfileDAOTest.testSaveProfile" finished-at="2018-08-06T11:14:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNoUpdatePrassword -->
+        <test-method status="PASS" signature="testUpdatePrassword()[pri:0, instance:com.javatest.app.ProfileDAOTest@4339e0de]" name="testUpdatePrassword" duration-ms="294" started-at="2018-08-06T11:14:19Z" depends-on-methods="com.javatest.app.ProfileDAOTest.testSaveProfile" finished-at="2018-08-06T11:14:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdatePrassword -->
+        <test-method status="PASS" signature="testUpdateProfile()[pri:0, instance:com.javatest.app.ProfileDAOTest@4339e0de]" name="testUpdateProfile" duration-ms="166" started-at="2018-08-06T11:14:19Z" depends-on-methods="com.javatest.app.ProfileDAOTest.testSaveProfile" finished-at="2018-08-06T11:14:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testUpdateProfile -->
+        <test-method status="PASS" signature="testDeleteProfile()[pri:0, instance:com.javatest.app.ProfileDAOTest@4339e0de]" name="testDeleteProfile" duration-ms="165" started-at="2018-08-06T11:14:19Z" depends-on-methods="com.javatest.app.ProfileDAOTest.testNoUpdatePrassword, com.javatest.app.ProfileDAOTest.testUpdateProfile, com.javatest.app.ProfileDAOTest.testUpdatePrassword" finished-at="2018-08-06T11:14:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDeleteProfile -->
+      </class> <!-- com.javatest.app.ProfileDAOTest -->
     </test> <!-- Command line test -->
-  </suite> <!-- com.javatest.app.AppTest -->
+  </suite> <!-- Command line suite -->
 </testng-results>

@@ -2,9 +2,7 @@ package com.javatest.app.dao;
 
 import com.javatest.app.model.Field;
 import com.javatest.app.model.Option;
-import com.javatest.app.model.QField;
 import com.javatest.app.util.HibernateUtil;
-import com.querydsl.jpa.hibernate.HibernateQueryFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,9 +28,9 @@ public class FieldDAO {
         List<Field> fieldsList = null;
         try {
             session = sessionFactory.openSession();
-            HibernateQueryFactory queryFactory = new HibernateQueryFactory(session);
-            QField field = QField.field;
-            fieldsList = queryFactory.selectFrom(field).fetch();
+            String hql = "SELECT f FROM Field f";
+            Query query = session.createQuery(hql);
+            fieldsList = (List<Field>)query.getResultList();
         } catch(Exception sqlException) {
             sqlException.printStackTrace();
         }finally {

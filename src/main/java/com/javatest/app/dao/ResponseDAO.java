@@ -1,10 +1,7 @@
 package com.javatest.app.dao;
 
-import com.javatest.app.model.Field;
-import com.javatest.app.model.QResponse;
 import com.javatest.app.model.Response;
 import com.javatest.app.util.HibernateUtil;
-import com.querydsl.jpa.hibernate.HibernateQueryFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -26,11 +23,10 @@ public class ResponseDAO {
     public static List<Response> getResponsesList() {
         List<Response> responsesList = null;
         try {
-            /** session is a Hibernate session */
-            session = HibernateUtil.getSessionFactory().openSession();
-            HibernateQueryFactory queryFactory = new HibernateQueryFactory(session);
-            QResponse response = QResponse.response;
-            responsesList = queryFactory.selectFrom(response).fetch();
+            session = sessionFactory.openSession();
+            String hql = "SELECT r FROM Response r";
+            Query query = session.createQuery(hql);
+            responsesList = (List<Response>)query.getResultList();
         } catch(Exception sqlException) {
             sqlException.printStackTrace();
         }finally {

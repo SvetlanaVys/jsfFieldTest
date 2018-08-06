@@ -9,12 +9,8 @@ com\javatest\app\dao\ResponseDAO.class
 com\javatest\app\model\Response.class
 com\javatest\app\dao\LoginDAO.class
 com\javatest\app\bean\ResponseBean.class
-com\javatest\app\model\QField.class
 com\javatest\app\model\Profile.class
 com\javatest\app\model\Field.class
 com\javatest\app\bean\FieldBean.class
-com\javatest\app\model\QProfile.class
 com\javatest\app\MainBean.class
 com\javatest\app\filter\AuthorizationFilter.class
-com\javatest\app\model\QOption.class
-com\javatest\app\model\QResponse.class

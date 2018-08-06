@@ -1,9 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 38.407 sec <<< FAILURE!
-testValidate(com.javatest.app.LoginDAOTest)  Time elapsed: 0.004 sec  <<< FAILURE!
-java.lang.NullPointerException
-	at com.javatest.app.dao.LoginDAO.validate(LoginDAO.java:32)
-	at com.javatest.app.LoginDAOTest.testValidate(LoginDAOTest.java:13)
-
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.018 sec

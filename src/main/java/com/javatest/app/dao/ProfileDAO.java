@@ -1,10 +1,7 @@
 package com.javatest.app.dao;
 
-import com.javatest.app.model.Field;
 import com.javatest.app.model.Profile;
-import com.javatest.app.model.QProfile;
 import com.javatest.app.util.HibernateUtil;
-import com.querydsl.jpa.hibernate.HibernateQueryFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.mindrot.jbcrypt.BCrypt;
@@ -23,27 +20,6 @@ import java.util.Map;
 public class ProfileDAO {
     private static Session session;
     private static SessionFactory sessionFactory =  HibernateUtil.getSessionFactory();
-
-    /**
-     *
-     * @deprecated
-     */
-    public static List<Profile> getProfilesList() {
-        List<Profile> profilesList = null;
-        try {
-            session = sessionFactory.openSession();
-            HibernateQueryFactory queryFactory = new HibernateQueryFactory(session);
-            QProfile profile = QProfile.profile;
-            profilesList = queryFactory.selectFrom(profile).fetch();
-        } catch(Exception sqlException) {
-            sqlException.printStackTrace();
-        }finally {
-            if(session != null) {
-                session.close();
-            }
-        }
-        return profilesList;
-    }
 
     /**
      * Create user`s profile
